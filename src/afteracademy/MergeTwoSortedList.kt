@@ -1,4 +1,4 @@
-package `after-academy`
+package afteracademy
 
 // https://afteracademy.com/blog/merge-two-sorted-lists
 // Merge Two Sorted Lists
