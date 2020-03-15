@@ -1,6 +1,7 @@
 package afteracademy
 
 import BinaryTree
+import TreeNode
 
 // https://afteracademy.com/blog/what-is-the-two-pointer-technique
 // Min Depth of Binary Tree
@@ -12,13 +13,34 @@ lateinit var tree: BinaryTree
 fun main() {
     tree = BinaryTree()
     tree.traverse()
-    tree.insert(1)
-    tree.insert(2)
-    tree.insert(3)
-    tree.insert(4)
-    tree.insert(5)
-    tree.insert(6)
-    tree.insert(7)
+    tree.insert(1) // adding root
+    tree.root?.let {
+        it.left = TreeNode(
+            2,
+            TreeNode(
+                4,
+                null,
+                null
+            ),
+            TreeNode(
+                5,
+                null,
+                TreeNode(
+                    6,
+                    null,
+                    TreeNode(
+                        7,
+                        null,
+                        null
+                    )
+                )
+            )
+
+        )
+        it.right = TreeNode(3)
+    }
     tree.traverse()
+    println("Min Depth: " + tree.minDepth())
+    println("Max Depth: " + tree.maxDepth())
 }
 

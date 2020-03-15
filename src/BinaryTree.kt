@@ -1,3 +1,6 @@
+import kotlin.math.max
+import kotlin.math.min
+
 open class BinaryTree {
     open var root: TreeNode? = null
 
@@ -45,5 +48,51 @@ open class BinaryTree {
         println(node.value)
         node.left?.let { traverse(it) }
         node.right?.let { traverse(it) }
+    }
+
+    fun minDepth(): Int {
+        return minDepth(root!!)
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun minDepth(node: TreeNode? = null): Int {
+        if (node == null) {
+            return 0
+        }
+        if (node.left == null && node.right == null) {
+            return 1
+        }
+
+        if (node.left == null) {
+            return 1 + minDepth(node.right)
+        }
+
+        if (node.right == null) {
+            return 1 + minDepth(node.left)
+        }
+        return 1 + min(minDepth(node.left), minDepth(node.right))
+    }
+
+    fun maxDepth(): Int {
+        return maxDepth(root!!)
+    }
+
+    @Suppress("MemberVisibilityCanBePrivate")
+    fun maxDepth(node: TreeNode? = null): Int {
+        if (node == null) {
+            return 0
+        }
+        if (node.left == null && node.right == null) {
+            return 1
+        }
+
+        if (node.left == null) {
+            return 1 + maxDepth(node.right)
+        }
+
+        if (node.right == null) {
+            return 1 + maxDepth(node.left)
+        }
+        return 1 + max(maxDepth(node.left), maxDepth(node.right))
     }
 }
