@@ -1,3 +1,3 @@
 package searching
 
-// todo
+// todo implement binary searching..
