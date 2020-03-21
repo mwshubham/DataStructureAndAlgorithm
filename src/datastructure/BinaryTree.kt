@@ -1,3 +1,5 @@
+package datastructure
+
 import kotlin.math.max
 import kotlin.math.min
 
@@ -54,6 +56,12 @@ open class BinaryTree {
         return minDepth(root!!)
     }
 
+    /**
+     * Depth first approach...
+     *
+     * Time Complexity: O(n)
+     * Space Complexity:  O(h) for recursion call stack.
+     */
     @Suppress("MemberVisibilityCanBePrivate")
     fun minDepth(node: TreeNode? = null): Int {
         if (node == null) {

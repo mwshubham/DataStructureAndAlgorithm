@@ -1,5 +1,7 @@
 @file:Suppress("unused")
 
+package datastructure
+
 class SortedBinaryTree : BinaryTree() {
 
     override fun insert(node: TreeNode, value: Int) {

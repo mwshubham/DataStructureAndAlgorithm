@@ -1,3 +1,5 @@
+package datastructure
+
 class TreeNode(
     var value: Int,
     var left: TreeNode? = null,
