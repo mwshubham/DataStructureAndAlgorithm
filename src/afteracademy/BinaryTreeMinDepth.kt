@@ -1,7 +1,7 @@
 package afteracademy
 
-import BinaryTree
-import TreeNode
+import datastructure.BinaryTree
+import datastructure.TreeNode
 
 // https://afteracademy.com/blog/what-is-the-two-pointer-technique
 // Min Depth of Binary Tree
