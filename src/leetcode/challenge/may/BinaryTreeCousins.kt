@@ -1,5 +1,7 @@
 package leetcode.challenge.may
 
+import datastructure.TreeNode
+
 
 class BinaryTreeCousins {
     fun isCousins(root: TreeNode?, x: Int, y: Int): Boolean {
@@ -79,7 +81,3 @@ fun main() {
     println(BinaryTreeCousins().isCousins(root, 5, 3))
 }
 
-class TreeNode(val `val`: Int) {
-    var left: TreeNode? = null
-    var right: TreeNode? = null
-}

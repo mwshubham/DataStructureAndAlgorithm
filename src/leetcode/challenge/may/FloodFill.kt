@@ -1,4 +1,4 @@
-package datastructure
+package leetcode.challenge.may
 
 import java.util.*
 
