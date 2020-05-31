@@ -2,7 +2,7 @@ package sorting
 
 // https://www.geeksforgeeks.org/merge-sort/
 
-val arr = intArrayOf(38, 27, 43, 3, 9, 82, 10)
+private val arr = intArrayOf(38, 27, 43, 3, 9, 82, 10)
 
 fun main() {
     println(" --------- START --------- ")
