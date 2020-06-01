@@ -1,6 +1,8 @@
 package problem.strings
 
 // todo
+// https://www.geeksforgeeks.org/rearrange-characters-string-no-two-adjacent/
+// https://www.geeksforgeeks.org/rearrange-characters-in-a-string-such-that-no-two-adjacent-are-same-using-hashing/
 // https://leetcode.com/problems/reorganize-string/solution/
 // https://www.geeksforgeeks.org/recursively-remove-adjacent-duplicates-given-string/
 class RemoveAllAdjacentDuplicatesRepeatedly {
