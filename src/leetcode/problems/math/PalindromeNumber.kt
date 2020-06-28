@@ -1,4 +1,4 @@
-package leetcode.problems.easy
+package leetcode.problems.math
 
 // https://leetcode.com/problems/palindrome-number/
 class PalindromeNumber {
