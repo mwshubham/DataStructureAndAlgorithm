@@ -1,6 +1,4 @@
-package leetcode.problems.array
-
-import kotlin.math.floor
+package leetcode.problems.array.easy
 
 // https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/534/week-1-may-1st-may-7th/3321/
 // https://leetcode.com/submissions/detail/335238735/?from=/explore/challenge/card/may-leetcoding-challenge/534/week-1-may-1st-may-7th/3321/
@@ -20,5 +18,6 @@ class MajorityElement {
 
 fun main() {
     println(MajorityElement().majorityElement(intArrayOf(3, 2, 3))) // 3
-    println(MajorityElement().majorityElement(intArrayOf(2, 2, 1, 1, 1, 2, 2))) // 2
+    println(
+        MajorityElement().majorityElement(intArrayOf(2, 2, 1, 1, 1, 2, 2))) // 2
 }

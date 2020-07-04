@@ -1,4 +1,4 @@
-package leetcode.problems.array
+package leetcode.problems.array.easy
 
 // https://leetcode.com/problems/shuffle-the-array
 private class ShuffleArray {

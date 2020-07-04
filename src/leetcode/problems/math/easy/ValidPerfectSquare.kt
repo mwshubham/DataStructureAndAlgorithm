@@ -1,4 +1,4 @@
-package leetcode.problems.math
+package leetcode.problems.math.easy
 
 import kotlin.math.abs
 
