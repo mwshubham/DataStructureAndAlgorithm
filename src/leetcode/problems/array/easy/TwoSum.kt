@@ -1,4 +1,4 @@
-package leetcode.problems.array
+package leetcode.problems.array.easy
 
 // https://leetcode.com/problems/two-sum/
 private class TwoSum {

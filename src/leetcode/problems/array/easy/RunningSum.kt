@@ -1,4 +1,4 @@
-package leetcode.problems.array
+package leetcode.problems.array.easy
 
 // https://leetcode.com/problems/running-sum-of-1d-array
 class RunningSum {

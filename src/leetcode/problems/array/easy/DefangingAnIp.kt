@@ -1,4 +1,4 @@
-package leetcode.problems.array
+package leetcode.problems.array.easy
 
 import java.lang.StringBuilder
 
