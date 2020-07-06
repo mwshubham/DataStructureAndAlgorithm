@@ -1,4 +1,4 @@
-package leetcode.problems.array.easy
+package leetcode.problems.array.medium
 
 /**
  *

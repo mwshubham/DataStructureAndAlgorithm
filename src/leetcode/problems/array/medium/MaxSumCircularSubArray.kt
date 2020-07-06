@@ -1,6 +1,6 @@
 @file:Suppress("SpellCheckingInspection")
 
-package leetcode.problems.array.easy
+package leetcode.problems.array.medium
 
 @Suppress("LocalVariableName")
 class MaxSumCircularSubArray {
