@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.problems.string.easy
 
 class FirstUniqueChar {
 

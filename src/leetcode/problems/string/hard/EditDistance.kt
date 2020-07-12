@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.problems.string.hard
 
 // https://leetcode.com/explore/challenge/card/m
 // https://www.geeksforgeeks.org/edit-distance-dp-5/
