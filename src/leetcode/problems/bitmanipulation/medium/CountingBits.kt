@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.problems.bitmanipulation.medium
 
 /**
  * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3343/

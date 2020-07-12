@@ -1,11 +1,7 @@
 package leetcode.problems.string.easy
 
-import java.lang.StringBuilder
-
 // https://leetcode.com/problems/decrypt-string-from-alphabet-to-integer-mapping/
 class DecryptStringFromAlphabetToIntegerMapping {
-
-
     fun freqAlphabets(s: String): String {
         val strBuilder = StringBuilder()
         var counter = 0
