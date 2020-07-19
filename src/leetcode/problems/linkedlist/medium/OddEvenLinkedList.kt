@@ -1,13 +1,12 @@
-package leetcode.challenge.may
+package leetcode.problems.linkedlist.medium
+
+import datastructure.ListNode
 
 private val Int.isEven: Boolean
     get() {
         return this % 2 == 0
     }
 
-class ListNode(var `val`: Int) {
-    var next: ListNode? = null
-}
 
 // https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3331/
 // https://leetcode.com/submissions/detail/340110891/?from=/explore/challenge/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3331/
