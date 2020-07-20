@@ -9,7 +9,7 @@ class MergeSortedList {
         var list2 = l2
         var mergedList: ListNode?
 
-        if (list1 == null && list2 == null) {
+        if (list1    == null && list2 == null) {
             return null
         }
         if (list1 == null) {
