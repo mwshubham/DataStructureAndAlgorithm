@@ -1,6 +1,7 @@
+@file:Suppress("unused")
+
 package leetcode.problems.stack.easy
 
-import jdk.vm.ci.code.Location.stack
 import java.util.*
 
 
@@ -47,7 +48,7 @@ class BaseballGame {
                 }
                 "D" -> {
                     list.add(list.peekLast() * 2)
-                    sum += list.peekLast();
+                    sum += list.peekLast()
                 }
                 else -> {
                     list.add(it.toInt())
@@ -80,7 +81,7 @@ class BaseballGame {
                 }
                 "D" -> {
                     list.addFirst(list.peekFirst() * 2)
-                    sum += list.peekFirst();
+                    sum += list.peekFirst()
                 }
                 else -> {
                     list.addFirst(it.toInt())
