@@ -6,6 +6,8 @@ import kotlin.math.min
 /**
  * https://leetcode.com/problems/minimum-distance-between-bst-nodes/
  * https://leetcode.com/problems/minimum-distance-between-bst-nodes/submissions/
+ *
+ * https://leetcode.com/problems/minimum-absolute-difference-in-bst/
  */
 class MinimumDistanceBetweenBSTNodes {
 
