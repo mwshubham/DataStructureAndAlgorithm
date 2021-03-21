@@ -2,6 +2,9 @@ package leetcode.problems.tree.easy
 
 import leetcode.problems.TreeNode
 
+/**
+ * https://leetcode.com/problems/same-tree/
+ */
 class SameTree {
     companion object {
         /**
