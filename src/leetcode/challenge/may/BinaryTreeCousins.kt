@@ -1,9 +1,45 @@
 package leetcode.challenge.may
 
 import datastructure.TreeNode
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class BinaryTreeCousins {
+
+    /**
+     * Runtime: 144 ms, faster than 100.00% of Kotlin online submissions for Cousins in Binary Tree.
+     * Memory Usage: 33.8 MB, less than 100.00% of Kotlin online submissions for Cousins in Binary Tree.
+     */
+    fun isCousinsUsingBFS(root: TreeNode?, x: Int, y: Int): Boolean {
+        root ?: return false
+        val queue = LinkedList<TreeNode>()
+        queue.offer(root)
+
+        while (queue.isNotEmpty()) {
+            val size = queue.size
+            var isXexist = false
+            var isYexist = false
+            repeat(size) {
+                val current = queue.poll()
+                if (current.`val` == x) isXexist = true
+                if (current.`val` == y) isYexist = true
+                if (current.left != null && current.right != null) {
+                    if (current.left!!.`val` == x && current.right!!.`val` == y) {
+                        return false
+                    }
+                    if (current.left!!.`val` == y && current.right!!.`val` == x) {
+                        return false
+                    }
+                }
+                current.left?.let { queue.offer(it) }
+                current.right?.let { queue.offer(it) }
+            }
+            if (isXexist && isYexist) return true
+        }
+        return false
+    }
+
     fun isCousins(root: TreeNode?, x: Int, y: Int): Boolean {
         root ?: return false
         val height = getHeight(root)
