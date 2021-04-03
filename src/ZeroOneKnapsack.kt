@@ -6,6 +6,7 @@ class ZeroOneKnapsack {
         /**
          * 1. Recursion Calls
          * 2. Recursion Calls + Memoization
+         * 3. Using Tabular DP
          * Without Memoization ->  TC: 0(2 pow N)
          * With Memoization ->  TC: 0(NW) Table Size
          */
@@ -31,6 +32,23 @@ class ZeroOneKnapsack {
             )
             return dp[index][space]
         }
+
+        fun maxProfitUsingTabulationDp(weights: IntArray, profits: IntArray, maxWeight: Int): Int {
+            dp = Array(profits.size + 1) {
+                Array(maxWeight + 1) {
+                    0
+                }
+            }
+            repeat(weights.size + 1) { i ->
+                repeat(maxWeight + 1) { j ->
+                    if (i == 0 || j == 0) dp[i][j] = 0
+                    else if (weights[i - 1] > j) dp[i][j] = dp[i - 1][j]
+                    else dp[i][j] = max(dp[i - 1][j], profits[i - 1] + dp[i - 1][maxWeight - weights[i - 1]])
+//                    println("dp[$i][$j] = ${dp[i][j]}")
+                }
+            }
+            return dp[profits.size][maxWeight]
+        }
     }
 }
 
@@ -38,10 +56,46 @@ class ZeroOneKnapsack {
 fun main() {
     val weights = intArrayOf(1, 2, 3)
     val profits = intArrayOf(2, 3, 5)
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 1))
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 2))
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 3))
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 4))
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 5))
-    println(ZeroOneKnapsack.maxProfit(weights, profits, 6))
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            1
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 1)
+    )
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            2
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 2)
+    )
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            3
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 3)
+    )
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            4
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 4)
+    )
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            5
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 5)
+    )
+    println(
+        ZeroOneKnapsack.maxProfitUsingTabulationDp(
+            weights,
+            profits,
+            6
+        ) == ZeroOneKnapsack.maxProfitUsingTabulationDp(weights, profits, 6)
+    )
 }
