@@ -1,10 +1,9 @@
-package kotlin
+package kotlin1
 
 fun main() {
     inlineFunction(
         abc = {
             println("abc")
-            return
         },
         xyz = {
             println("xyz")
@@ -18,8 +17,8 @@ fun normalFunction() {
 }
 
 inline fun inlineFunction(
-    abc: () -> Unit,
-    xyz: () -> Unit
+    noinline abc: () -> Unit,
+    crossinline xyz: () -> Unit
 ) {
     println("Inside Inline Function")
     abc()
