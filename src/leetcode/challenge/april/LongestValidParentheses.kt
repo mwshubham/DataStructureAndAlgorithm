@@ -69,7 +69,7 @@ fun main() {
 }
 
 
-fun Any.println() = println(this)
+
 
 
 
