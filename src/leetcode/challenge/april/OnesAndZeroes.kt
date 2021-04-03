@@ -4,6 +4,7 @@ import kotlin.math.max
 
 /**
  * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3694/
+ * https://leetcode.com/problems/ones-and-zeroes/
  */
 class OnesAndZeroes {
     //    ["10","0001","111001","1","0"]
