@@ -10,7 +10,7 @@ class ZeroOneKnapsack {
          * Without Memoization ->  TC: 0(2 pow N)
          * With Memoization ->  TC: 0(NW) Table Size
          * Using Tabular DP (Top Down) -> TC: O(nW), SC: O(nW)
-         * Using Tabular DP (Bottom UP) -> TC: O(nW), SC: O(nW)
+         * Using Tabular DP (Bottom UP) -> TC: O(nW), SC: O(W)
          */
         lateinit var dp: Array<Array<Int>>
 
