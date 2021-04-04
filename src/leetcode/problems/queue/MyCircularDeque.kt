@@ -1,10 +1,5 @@
 package leetcode.problems.queue
 
-class DequeueNode(
-    var value: Int,
-    var next: DequeueNode? = null,
-    var prev: DequeueNode? = null
-)
 
 //Failed Test Case
 //["MyCircularDeque","insertFront","insertFront","getFront","insertLast","insertLast","getFront","isFull","isEmpty","getFront","isFull","deleteLast","insertFront","deleteLast","insertLast","getRear","deleteLast","getFront","deleteFront","getFront","insertLast","getFront","insertFront","getRear","deleteFront","isFull","getRear","insertFront","insertFront","getRear","insertFront","getRear","getRear","getRear","isFull","insertFront","insertFront","getRear","isFull","deleteLast","getFront","getRear","isFull","deleteLast","insertFront","deleteLast","getFront","deleteLast","getRear","insertLast","deleteFront","getFront","getRear","insertLast","getRear","getFront","insertLast","getRear","getFront","getFront","deleteLast","insertLast","deleteFront","insertLast","getFront","insertFront","deleteLast","insertLast","getFront","getRear","insertLast","insertLast","insertFront","getFront","getFront","getRear","insertLast","deleteLast","deleteFront","insertLast","getFront","getRear","isFull","insertFront","getFront","insertLast","insertLast","getRear","getRear","deleteLast","insertFront","getFront","getFront","insertFront","insertLast","getRear","deleteLast","getFront","insertLast","insertLast","insertLast","deleteFront"]
@@ -14,144 +9,78 @@ class DequeueNode(
 //["MyCircularDeque","insertFront","getFront","insertFront","getFront","deleteLast","insertFront","insertFront","getRear","getFront","getRear","getRear","insertLast","deleteFront","getFront","insertLast","getRear","insertLast","deleteFront","insertFront","isFull","getRear","deleteLast","insertLast","getRear","getFront","getFront","insertLast","insertFront","deleteFront","getRear","insertLast","deleteFront","insertFront","insertFront","getRear","getFront","insertFront","insertLast","getRear","getFront","insertFront","insertFront","insertLast","insertLast","getRear","isEmpty","deleteFront","getRear","getRear","getRear","insertLast","getFront","getFront","deleteLast","deleteLast","insertLast","getRear","getRear","insertLast","insertLast","insertFront","getFront","getRear","getFront","insertFront","insertFront","deleteFront","isEmpty","getFront","deleteFront","isFull","getFront","getRear","insertLast","getFront","insertLast","getRear","insertLast","insertFront","getRear","getFront","getFront","deleteLast","deleteLast","insertLast","getRear","getRear","getFront","deleteLast","isFull","insertLast","insertLast","insertFront","getFront","insertFront","isFull","getRear","insertFront","deleteLast","insertLast","insertLast"]
 //[[52],[80],[],[27],[],[],[60],[81],[],[],[],[],[46],[],[],[98],[],[11],[],[51],[],[],[],[28],[],[],[],[28],[69],[],[],[11],[],[25],[74],[],[],[48],[7],[],[],[65],[59],[23],[32],[],[],[],[],[],[],[84],[],[],[],[],[64],[],[],[17],[34],[46],[],[],[],[6],[20],[],[],[],[],[],[],[],[34],[],[66],[],[54],[34],[],[],[],[],[],[43],[],[],[],[],[],[21],[93],[79],[],[8],[],[],[78],[],[7],[67]]
 
+class DequeueNode(
+    var value: Int,
+    var next: DequeueNode? = null,
+    var prev: DequeueNode? = null
+)
+
 /**
  * https://leetcode.com/problems/design-circular-deque/
- * WRONG ANSWER
+ * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3696/
+ * https://leetcode.com/submissions/detail/476328874/?from=explore&item_id=3696
+ *
  */
 class MyCircularDeque(val k: Int) {
-
     /** Initialize your data structure here. Set the size of the deque to be k. */
     var front: DequeueNode? = null
     var rear: DequeueNode? = null
     var size: Int = 0
 
-    /** Adds an item at the front of Deque. Return true if the operation is successful. */
-    fun insertFront(value: Int): Boolean {
-        when (size) {
-            k -> {
-                return false
-            }
-            0 -> {
-                DequeueNode(value).let {
-                    front = it
-                    front?.prev = it
-                    front?.next = it
-                    rear = it
-                }
-            }
-            else -> {
-                DequeueNode(value).let {
-                    it.prev = front?.prev
-                    it.next = front
-                    front = it
-                }
-            }
-        }
+    val capacity = k
+    val head = DequeueNode(-1)
+    val tail = DequeueNode(-1)
+
+    init {
+        head.next = tail
+        tail.prev = head
+    }
+
+
+    fun enQueue(value: Int): Boolean {
+        if (isFull()) return false
+
+        val node = DequeueNode(value)
+        val temp = tail.prev!!
+
+        tail.prev = node
+        node.next = tail
+
+        node.prev = temp
+        temp.next = node
+
         size++
+
         return true
     }
 
-    /** Adds an item at the rear of Deque. Return true if the operation is successful. */
-    fun insertLast(value: Int): Boolean {
-        when (size) {
-            k -> {
-                return false
-            }
-            0 -> {
-                DequeueNode(value).let {
-                    front = it
-                    front?.prev = it
-                    front?.next = it
-                    rear = it
-                }
-            }
-            else -> {
-                DequeueNode(value).let {
-                    it.prev = rear
-                    it.next = rear?.next
-                    rear = it
-                }
-            }
-        }
-        size++
-        return true
-    }
+    fun deQueue(): Boolean {
+        if (isEmpty()) return false
 
-    /** Deletes an item from the front of Deque. Return true if the operation is successful. */
-    fun deleteFront(): Boolean {
-        if (size == 0) {
-            return false
-        }
-        if (size == 1) {
-            front = null
-            rear = null
-            size--
-            return true
-        }
-        if (size == 2) {
-            rear?.next = rear
-            rear?.prev = rear
-            front = rear
-            size--
-            return true
-        }
-        val temp = front
-        front = front?.next
-        front?.prev = temp?.prev
-        size--
-        return true
-    }
+        val node = head.next!!
+        val temp = node.next!!
 
-    /** Deletes an item from the rear of Deque. Return true if the operation is successful. */
-    fun deleteLast(): Boolean {
-        if (size == 0) {
-            return false
-        }
-        if (size == 1) {
-            front = null
-            rear = null
-            size--
-            return true
-        }
-        if (size == 2) {
-            front?.next = front
-            front?.prev = front
-            rear = front
-            size--
-            return true
-        }
-        val temp = rear
-        rear = rear?.prev
-        rear?.next = temp?.next
+        head.next = temp
+        temp.prev = head
+
         size--
 
         return true
     }
 
-    /** Get the front item from the deque. */
-    fun getFront(): Int {
-        if (size == 0) {
-            return -1
-        }
-        return front!!.value
+    fun Front(): Int {
+        return if (isEmpty()) -1 else head.next!!.value
     }
 
-    /** Get the last item from the deque. */
-    fun getRear(): Int {
-        if (size == 0) {
-            return -1
-        }
-        return rear!!.value
+    fun Rear(): Int {
+        return if (isEmpty()) -1 else tail.prev!!.value
     }
 
-    /** Checks whether the circular deque is empty or not. */
     fun isEmpty(): Boolean {
-        return size == 0
+        return head.next == tail
     }
 
-    /** Checks whether the circular deque is full or not. */
     fun isFull(): Boolean {
-        return size == k
+        return size == capacity
     }
-
 }
