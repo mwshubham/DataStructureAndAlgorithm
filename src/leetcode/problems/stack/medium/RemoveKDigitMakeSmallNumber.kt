@@ -33,6 +33,10 @@ class RemoveKDigitMakeSmallNumber {
     private fun mapOutput(input: String) = if (input.isEmpty()) "0" else input
 
 
+    /**
+     * Runtime: 236 ms, faster than 38.89% of Kotlin online submissions for Remove K Digits.
+     * Memory Usage: 37.2 MB, less than 38.89% of Kotlin online submissions for Remove K Digits.
+     */
     fun removeKDigitsUsingStack(num: String, k: Int): String {
         val stack = Stack<Char>()
         var K = k
@@ -63,7 +67,6 @@ class RemoveKDigitMakeSmallNumber {
 
 fun main() {
     val instance = RemoveKDigitMakeSmallNumber()
-
     println(instance.removeKDigitsUsingStack("1432219", 3)) // 1219
     println(instance.removeKDigitsUsingStack("10200", 1)) // 200
     println(instance.removeKDigitsUsingStack("10", 2)) // 0
