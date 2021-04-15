@@ -6,7 +6,7 @@ package leetcode.problems.trie.medium
  */
 class TrieNode(
     val char: Char,
-    var endsHere: Boolean?,
+    var isWord: Boolean?,
     val children: Array<TrieNode?>
 )
 
@@ -19,34 +19,34 @@ class Trie {
     val root = TrieNode('/', null, Array(26) { null })
 
     fun insert(word: String) {
-        var trieNode = root
+        var node = root
         word.forEach {
-            if (trieNode.children[it - 'a'] == null) {
-                trieNode.children[it - 'a'] = TrieNode(it, null, Array(26) { null })
+            if (node.children[it - 'a'] == null) {
+                node.children[it - 'a'] = TrieNode(it, null, Array(26) { null })
             }
-            trieNode = trieNode.children[it - 'a']!!
+            node = node.children[it - 'a']!!
         }
-        trieNode.endsHere = true
+        node.isWord = true
     }
 
     fun search(word: String): Boolean {
-        var trieNode = root
+        var node = root
         word.forEach {
-            if (trieNode.children[it - 'a'] == null) {
+            if (node.children[it - 'a'] == null) {
                 return false
             }
-            trieNode = trieNode.children[it - 'a']!!
+            node = node.children[it - 'a']!!
         }
-        return trieNode.endsHere == true
+        return node.isWord == true
     }
 
     fun startsWith(prefix: String): Boolean {
-        var trieNode = root
+        var node = root
         prefix.forEach {
-            if (trieNode.children[it - 'a'] == null) {
+            if (node.children[it - 'a'] == null) {
                 return false
             }
-            trieNode = trieNode.children[it - 'a']!!
+            node = node.children[it - 'a']!!
         }
         return true
     }
