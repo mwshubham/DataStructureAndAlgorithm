@@ -3,8 +3,7 @@ package leetcode.problems.stack.easy
 import java.util.*
 
 /**
- * Runtime: 140 ms, faster than 86.47% of Kotlin online submissions for Valid Parentheses.
- * Memory Usage: 33.6 MB, less than 63.37% of Kotlin online submissions for Valid Parentheses.
+ * https://leetcode.com/problems/valid-parentheses/
  */
 class ValidParentheses {
 
@@ -19,6 +18,10 @@ class ValidParentheses {
         fun isClosingBracket(char: Char) = !isOpeningBracket(char)
     }
 
+    /**
+     * Runtime: 140 ms, faster than 86.47% of Kotlin online submissions for Valid Parentheses.
+     * Memory Usage: 33.6 MB, less than 63.37% of Kotlin online submissions for Valid Parentheses.
+     */
     fun isValid(s: String): Boolean {
         if (s.isEmpty()) return true
         if (s.length % 2 != 0) return false
@@ -62,5 +65,17 @@ class ValidParentheses {
             }
         }
         return stackB.isEmpty()
+    }
+
+    /**
+     * Runtime: 124 ms, faster than 99.46% of Kotlin online submissions for Valid Parentheses.
+     * Memory Usage: 33.4 MB, less than 86.67% of Kotlin online submissions for Valid Parentheses.
+     */
+    fun isValid3(s: String): Boolean {
+        val stack = Stack<Char>()
+        for (c in s.toCharArray()) {
+            if (c == '(') stack.push(')') else if (c == '{') stack.push('}') else if (c == '[') stack.push(']') else if (stack.isEmpty() || stack.pop() != c) return false
+        }
+        return stack.isEmpty()
     }
 }
