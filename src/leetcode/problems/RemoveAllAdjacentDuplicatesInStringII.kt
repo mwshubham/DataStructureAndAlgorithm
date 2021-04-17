@@ -5,6 +5,7 @@ import java.util.*
 
 /**
  * https://leetcode.com/problems/remove-all-adjacent-duplicates-in-string-ii/
+ * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3710/
  */
 
 class CustomPair(
@@ -17,6 +18,8 @@ class RemoveAllAdjacentDuplicatesInStringII {
      * Using CustomPair
      * Runtime: 212 ms, faster than 73.33% of Kotlin online submissions for Remove All Adjacent Duplicates in String II.
      * Memory Usage: 36.3 MB, less than 73.33% of Kotlin online submissions for Remove All Adjacent Duplicates in String II.
+     *
+     * https://leetcode.com/submissions/detail/481293190/?from=explore&item_id=3710
      */
     fun removeDuplicates2(s: String, k: Int): String {
         val stack = Stack<CustomPair>()
