@@ -4,6 +4,7 @@ import kotlin1.println
 
 /**
  * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3713/
+ * https://leetcode.com/problems/combination-sum-iv/
  */
 class CombinationSum4 {
 
@@ -29,6 +30,28 @@ class CombinationSum4 {
                 }
             }
             return dp.last()
+        }
+
+        /**
+         * Runtime: 152 ms, faster than 29.41% of Kotlin online submissions for Combination Sum IV.
+         * Memory Usage: 33.2 MB, less than 88.24% of Kotlin online submissions for Combination Sum IV.
+         */
+        fun combinationSum4AnotherDP(nums: IntArray, target: Int): Int {
+            return combinationSum4AnotherDP(nums, target, IntArray(target + 1) { -1 })
+        }
+
+        fun combinationSum4AnotherDP(nums: IntArray, target: Int, dp: IntArray): Int {
+            if (target == 0) return 1
+            if (target < 0) return 0
+            if (dp[target] != -1) return dp[target]
+            var count = 0
+            for (num in nums) {
+                if (target >= num) {
+                    count += combinationSum4AnotherDP(nums, target - num, dp)
+                }
+                dp[target] = count
+            }
+            return dp[target]
         }
 
         // Recusive Solution
