@@ -1,4 +1,4 @@
-//import leetcode.problems.medium.Color
+//import leetcode.problems.difficulty.medium.Color
 //import java.lang.StringBuilder
 
 
