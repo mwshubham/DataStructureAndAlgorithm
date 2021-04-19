@@ -8,6 +8,10 @@ import kotlin.collections.ArrayList
  * 103. Binary Tree Zigzag Level Order Traversal
  * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
  */
+//[3,9,20,null,null,15,7]
+//[1]
+//[]
+//[1,2,3,4,null,null,5]
 class BinaryTreeZigzagLevelOrderTraversal {
     companion object {
 
