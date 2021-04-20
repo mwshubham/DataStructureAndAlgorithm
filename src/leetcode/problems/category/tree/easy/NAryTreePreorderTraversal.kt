@@ -5,6 +5,7 @@ import java.util.*
 /**
  * https://leetcode.com/problems/n-ary-tree-preorder-traversal/
  * https://leetcode.com/problems/n-ary-tree-preorder-traversal/submissions/
+ * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/595/week-3-april-15th-april-21st/3714/
  */
 class NAryTreePreorderTraversal {
     var output = LinkedList<Int>()
