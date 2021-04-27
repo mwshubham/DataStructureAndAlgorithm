@@ -6,8 +6,10 @@ import kotlin.math.abs
  * 977. Squares of a Sorted Array
  * https://leetcode.com/problems/squares-of-a-sorted-array/
  * https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3240/
+ * https://leetcode.com/explore/learn/card/fun-with-arrays/523/conclusion/3574/
  *
  * https://leetcode.com/submissions/detail/484478160/?from=explore&item_id=3240
+ * https://leetcode.com/submissions/detail/484999061/?from=explore&item_id=3574
  */
 class SquaresOfASortedArray {
     companion object {
