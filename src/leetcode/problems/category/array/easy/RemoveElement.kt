@@ -6,8 +6,10 @@ import kotlin1.println
  * 27. Remove Element
  * https://leetcode.com/problems/remove-element/
  * https://leetcode.com/explore/featured/card/fun-with-arrays/526/deleting-items-from-an-array/3247/
+ * https://leetcode.com/explore/learn/card/fun-with-arrays/511/in-place-operations/3575/
  *
  * https://leetcode.com/submissions/detail/484968668/?from=explore&item_id=3247
+ * https://leetcode.com/submissions/detail/484998755/?from=explore&item_id=3575
  */
 //[3,2,2,3]
 //3
