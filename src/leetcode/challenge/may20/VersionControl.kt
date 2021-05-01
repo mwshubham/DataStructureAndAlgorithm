@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.challenge.may20
 
 abstract class VersionControl {
     abstract fun firstBadVersion(n: Int): Int

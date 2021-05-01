@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.challenge.may20
 
 class JewelsAndStones {
     companion object {

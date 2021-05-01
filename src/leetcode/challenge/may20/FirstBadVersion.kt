@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.challenge.may20
 
 class Solution : VersionControl() {
     override fun firstBadVersion(n: Int): Int {
