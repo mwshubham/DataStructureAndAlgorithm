@@ -1,4 +1,4 @@
-package leetcode.challenge.may
+package leetcode.challenge.may20
 
 // https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/535/week-2-may-8th-may-14th/3325/
 // https://leetcode.com/submissions/detail/337241747/?from=/explore/challenge/card/may-leetcoding-challenge/535/week-2-may-8th-may-14th/3325/
