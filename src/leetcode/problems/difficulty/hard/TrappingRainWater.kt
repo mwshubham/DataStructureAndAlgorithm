@@ -1,4 +1,4 @@
-package leetcode.problems.category.hard
+package leetcode.problems.difficulty.hard
 
 /**
  * 42. Trapping Rain Water
