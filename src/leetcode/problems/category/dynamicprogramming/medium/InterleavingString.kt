@@ -1,4 +1,4 @@
-package leetcode.problems.difficulty.medium
+package leetcode.problems.category.dynamicprogramming.medium
 
 /**
  * 97. Interleaving String
