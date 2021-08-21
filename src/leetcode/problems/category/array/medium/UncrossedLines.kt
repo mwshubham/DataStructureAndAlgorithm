@@ -7,7 +7,7 @@ import kotlin.math.max
  * https://leetcode.com/submissions/detail/344794293/?from=/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3340/
  * https://leetcode.com/problems/uncrossed-lines/
  *
- * Longest Common Substring same problem
+ * Longest Common Subsequence same problem
  */
 class UncrossedLines {
     /**
