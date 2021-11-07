@@ -1,11 +1,60 @@
-package leetcode.challenge.may20
+package leetcode.problems.category.graph.medium
 
 import java.util.*
 
-// https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/538/week-5-may-29th-may-31st/3344/
-// https://leetcode.com/submissions/detail/346495459/?from=/explore/challenge/card/may-leetcoding-challenge/538/week-5-may-29th-may-31st/3344/
-// https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+/**
+ * 207. Course Schedule
+ * https://leetcode.com/problems/course-schedule/
+ * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/538/week-5-may-29th-may-31st/3344/
+ * https://leetcode.com/submissions/detail/346495459/?from=/explore/challenge/card/may-leetcoding-challenge/538/week-5-may-29th-may-31st/3344/
+ * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+ */
 class CourseSchedule {
+
+    /**
+     * Runtime: 176 ms, faster than 100.00% of Kotlin online submissions for Course Schedule.
+     * Memory Usage: 43 MB, less than 83.03% of Kotlin online submissions for Course Schedule.
+     */
+    fun canFinish2(numCourses: Int, prerequisites: Array<IntArray>): Boolean {
+        val size = prerequisites.size
+        if (size == 0) return true
+        if (size == 1) return true
+
+        val adj = Array(numCourses) { ArrayList<Int>() }
+        for (edge in prerequisites) {
+            adj[edge[0]].add(edge[1])
+        }
+
+        val visited = Array(numCourses) { 0 }
+        repeat (numCourses) {
+            if (visited[it] == 0) {
+                if (isCyclic(adj, visited, it)) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    /**
+     * 0 - unvisited
+     * 1 - processed
+     * 2 - processing
+     */
+    private fun isCyclic(adj: Array<ArrayList<Int>>, visited: Array<Int>,  current: Int) : Boolean {
+        if (visited[current] == 2) return true
+        visited[current] = 2
+
+        for (i in adj[current].indices){
+            if (visited[adj[current][i]] != 1){
+                if (isCyclic(adj, visited, adj[current][i])){
+                    return true
+                }
+            }
+        }
+        visited[current] = 1
+        return false
+    }
 
     class Graph(
         val V: Int
