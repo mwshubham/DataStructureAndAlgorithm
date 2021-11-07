@@ -1,11 +1,59 @@
-package leetcode.challenge.may20
+package leetcode.problems.category.graph.medium
 
 import java.util.*
 import kotlin.collections.ArrayList
 
-// https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3342/
-// https://leetcode.com/submissions/detail/345664599/?from=/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3342/
+/**
+ * 886. Possible Bipartition
+ * https://leetcode.com/problems/possible-bipartition/
+ * https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3342/
+ * https://leetcode.com/submissions/detail/345664599/?from=/explore/challenge/card/may-leetcoding-challenge/537/week-4-may-22nd-may-28th/3342/
+ */
 class PossibleBipartition {
+
+    /**
+     * Runtime: 392 ms, faster than 95.00% of Kotlin online submissions for Possible Bipartition.
+     * Memory Usage: 51.9 MB, less than 90.00% of Kotlin online submissions for Possible Bipartition.
+     */
+    fun possibleBipartition2(N: Int, dislikes: Array<IntArray>): Boolean {
+        val adj = Array(N + 1) { ArrayList<Int>() }
+        for (edge in dislikes) {
+            adj[edge[0]].add(edge[1])
+            adj[edge[1]].add(edge[0])
+        }
+
+        val color = Array(N + 1) { -1}
+        for (node in 1..N) {
+            if (color[node] == -1) {
+                if (!isBipartite(adj, N, node, color)) {
+                    return false
+                }
+            }
+        }
+        return true
+    }
+
+    private fun isBipartite(adj: Array<ArrayList<Int>>, N: Int, node: Int, color: Array<Int>) : Boolean {
+        val q = LinkedList<Int>()
+        q.push(node)
+        color[node] = 1
+
+        while (q.isNotEmpty()) {
+            val curr = q.first()
+            q.pop()
+            for (element in adj[curr]) {
+                // Odd cycle
+                if (color[element] == color[curr]) return false
+                // Unvisited element
+                if (color[element] == -1) {
+                    color[element] = 1 - color[curr]
+                    q.push(element)
+                }
+            }
+        }
+        return true
+    }
+
     private lateinit var graph: Array<ArrayList<Int>>
     private lateinit var color: MutableMap<Int, Int>
 
