@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.problems.category.bitmanipulation.easy
 
 import kotlin1.println
 
