@@ -7,6 +7,8 @@ import kotlin.collections.ArrayList
 /**
  * 103. Binary Tree Zigzag Level Order Traversal
  * https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/
+ * https://leetcode.com/explore/interview/card/top-interview-questions-medium/108/trees-and-graphs/787/
+ * https://leetcode.com/submissions/detail/600584651/?from=explore&item_id=787
  */
 //[3,9,20,null,null,15,7]
 //[1]
