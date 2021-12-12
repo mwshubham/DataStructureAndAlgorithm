@@ -3,6 +3,8 @@ package leetcode.problems.category.graph.medium
 /**
  * 200. Number of Islands
  * https://leetcode.com/problems/number-of-islands/
+ * https://leetcode.com/explore/interview/card/top-interview-questions-medium/108/trees-and-graphs/792/
+ * https://leetcode.com/submissions/detail/600592388/?from=explore&item_id=792
  */
 //[["1","1","1","1","0"],["1","1","0","1","0"],["1","1","0","0","0"],["0","0","0","0","0"]]
 //[["1","1","0","0","0"],["1","1","0","0","0"],["0","0","1","0","0"],["0","0","0","1","1"]]
