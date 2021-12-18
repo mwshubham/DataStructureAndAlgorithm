@@ -1,9 +1,11 @@
-package leetcode.problems.difficulty
+package leetcode.problems.difficulty.medium
 
 import java.util.*
 import kotlin.collections.ArrayList
 
 /**
+ * 17. Letter Combinations of a Phone Number
+ * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/
  * https://leetcode.com/problems/letter-combinations-of-a-phone-number/
  */
@@ -25,19 +27,5 @@ class LetterCombinationsOfAPhoneNumber {
             }
         }
         return ans
-    }
-
-    companion object {
-        val digitCharMap = Array<List<Char>>(9) { ArrayList(0) }
-            .apply {
-                set(2, listOf('a', 'b', 'c'))
-                set(3, listOf('d', 'e', 'f'))
-                set(4, listOf('g', 'h', 'i'))
-                set(5, listOf('j', 'k', 'l'))
-                set(6, listOf('m', 'n', 'o'))
-                set(7, listOf('p', 'q', 'r', 's'))
-                set(8, listOf('t', 'u', 'v'))
-                set(9, listOf('w', 'x', 'y', 'z'))
-            }
     }
 }
