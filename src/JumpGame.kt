@@ -2,8 +2,15 @@ import kotlin1.println
 import kotlin.math.max
 
 /**
+ * 55. Jump Game
  * https://leetcode.com/problems/jump-game/
+ * https://leetcode.com/explore/interview/card/top-interview-questions-medium/111/dynamic-programming/807/
+ * https://leetcode.com/submissions/detail/623216801/?from=explore&item_id=807
  */
+//[2,3,1,1,4]
+//[0,1]
+//[0]
+//[3, 2, 1, 0, 4]
 class JumpGame {
     companion object {
         /**
@@ -20,6 +27,20 @@ class JumpGame {
                 i++
             }
             return i == nums.size
+        }
+
+        fun canJump2(nums: IntArray): Boolean {
+            if (nums.size == 1) return true
+            var index = 0
+            var reach = 0
+
+            while (index in 0 until nums.lastIndex && index <= reach) {
+                reach = max(reach, index + nums[index])
+                if (reach >= nums.lastIndex) return true
+                index++
+            }
+
+            return false
         }
     }
 }
