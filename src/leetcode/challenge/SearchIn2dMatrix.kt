@@ -4,6 +4,7 @@ package leetcode.challenge
 
 
 /**
+ * 74. Search a 2D Matrix
  * https://leetcode.com/problems/search-a-2d-matrix/
  * https://leetcode.com/explore/challenge/card/october-leetcoding-challenge/561/week-3-october-15th-october-21st/3497/
  * https://leetcode.com/submissions/detail/409749312/?from=/explore/challenge/card/october-leetcoding-challenge/561/week-3-october-15th-october-21st/3497/
@@ -11,6 +12,8 @@ package leetcode.challenge
 class SearchIn2dMatrix {
 
     /**
+     * Don't treat it as a 2D matrix, just treat it as a sorted list
+     *
      * Runtime: 168 ms, faster than 85.96% of Kotlin online submissions for Search a 2D Matrix.
      * Memory Usage: 34.5 MB, less than 5.26% of Kotlin online submissions for Search a 2D Matrix.
      */
