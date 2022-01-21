@@ -39,6 +39,7 @@ class CoinChange {
             val dp = IntArray(amount + 1)
             dp[0] = 0
             for (i in 1..dp.lastIndex){
+                // Not Int.MAX_VALUE to prevent overflow.
                 dp[i] = amount + 1
             }
             dp.println()
