@@ -1,5 +1,7 @@
 package leetcode.problems.category.array.easy
 
+import kotlin.math.abs
+
 // https://leetcode.com/problems/two-sum/
 private class TwoSum {
     fun twoSum(nums: IntArray, target: Int): IntArray {
@@ -15,9 +17,11 @@ private class TwoSum {
     }
 }
 
-private fun main(){
+private fun main() {
     val instance = TwoSum()
-    println(instance.twoSum(intArrayOf(2, 7,11, 15), 9).asList()) // [1, 0]
-    println(instance.twoSum(intArrayOf(-2, 7,11, 15), 9).asList()) // [2, 0]
-    println(instance.twoSum(intArrayOf(3,3), 6).asList()) // [1, 0]
+//    println(instance.twoSum(intArrayOf(2, 7, 11, 15), 9).asList()) // [1, 0]
+//    println(instance.twoSum(intArrayOf(-2, 7, 11, 15), 9).asList()) // [2, 0]
+//    println(instance.twoSum(intArrayOf(3, 3), 6).asList()) // [1, 0]
+//    println(instance.twoSum(intArrayOf(3, 2, 4), 6).asList()) // [1, 2]
+    println(instance.twoSum(intArrayOf(-1, -2, -3, -4, -5), -8).asList())
 }
