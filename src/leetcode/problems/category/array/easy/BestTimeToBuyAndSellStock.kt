@@ -1,8 +1,12 @@
 package leetcode.problems.category.array.easy
 
+import kotlin1.println
+import kotlin.math.max
+
 // https://leetcode.com/explore/challenge/card/september-leetcoding-challenge/556/week-3-september-15th-september-21st/3464/
 // https://leetcode.com/submissions/detail/397730657/?from=/explore/challenge/card/september-leetcoding-challenge/556/week-3-september-15th-september-21st/3464/
 class BestTimeToBuyAndSellStock {
+
     fun maxProfit(prices: IntArray): Int {
         var profit = 0
         if (prices.isEmpty()) return profit
@@ -32,5 +36,24 @@ class BestTimeToBuyAndSellStock {
                 maxprofit = prices[i] - minprice
         }
         return maxprofit
+    }
+
+    fun maxProfit3(prices: IntArray): Int {
+        var buyAt = Int.MAX_VALUE
+        var maxProfit = 0
+        prices.forEach {
+            if (it < buyAt) {
+                buyAt = it
+            } else if (it > buyAt) {
+                maxProfit = max(maxProfit, it - buyAt)
+            }
+        }
+        return maxProfit
+    }
+}
+
+fun main() {
+    BestTimeToBuyAndSellStock().apply {
+        maxProfit3(intArrayOf(7, 1, 5, 3, 6, 4)).println()
     }
 }
