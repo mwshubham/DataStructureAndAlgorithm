@@ -4,6 +4,14 @@ import java.util.*
 
 /**
  * https://leetcode.com/problems/valid-parentheses/
+ * "()"
+ * "()[]{}"
+ * "(]"
+ * "([])"
+ * ")"
+ * "){"
+ * "(){}}{"
+ * "(])"
  */
 class ValidParentheses {
 
@@ -78,4 +86,28 @@ class ValidParentheses {
         }
         return stack.isEmpty()
     }
+
+    fun isValid4(s: String): Boolean {
+        if (s.length % 2 == 1) return false
+        val stack = Stack<Char>()
+        s.forEach {
+            if (stack.isEmpty() && (it == ')' || it == '}' || it == ']')) {
+                return false
+            }
+            if (it == '(' || it == '{' || it == '[') {
+                stack.push(it)
+            } else if (it == ')' && stack.peek() == '(') {
+                stack.pop()
+            } else if (it == '}' && stack.peek() == '{') {
+                stack.pop()
+            } else if (it == ']' && stack.peek() == '[') {
+                stack.pop()
+            } else {
+                stack.push(it)
+            }
+        }
+        return stack.isEmpty()
+    }
+
+
 }
