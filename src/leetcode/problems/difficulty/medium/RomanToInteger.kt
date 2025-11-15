@@ -1,4 +1,4 @@
-package leetcode
+package leetcode.problems.difficulty.medium
 
 /**
  * 13. Roman to Integer
@@ -45,5 +45,4 @@ class RomanToInteger {
         }
 
     }
-
 }
