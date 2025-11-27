@@ -14,11 +14,12 @@ class LRUCache(private val capacity: Int) {
     private val queue = ArrayDeque<Int>()
     private val hashset = HashSet<Int>()
 
-    var head = Node(0, 0).apply {
-        next = tail
-    }
     var tail: Node? = Node(0, 0).apply {
         prev = null
+    }
+
+    var head = Node(0, 0).apply {
+        next = tail
     }
 
     var map = HashMap<Int, Node>()
