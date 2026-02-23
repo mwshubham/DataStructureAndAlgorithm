@@ -1,6 +1,7 @@
 package leetcode.problems.difficulty.hard
 
 import datastructure.ListNode
+import kotlin1.println
 import java.util.*
 
 /**
@@ -39,4 +40,23 @@ class MergeKSortedLists {
             return dummy.next
         }
     }
+}
+
+fun main() {
+    MergeKSortedLists.mergeKLists(
+        arrayOf(
+            ListNode(1).apply {
+                next = ListNode(4).apply {
+                    next = ListNode(5)
+                }
+            },
+            ListNode(1).apply {
+                next = ListNode(3).apply {
+                    next = ListNode(4)
+                }
+            },
+            ListNode(2).apply {
+            }
+        )
+    ).println()
 }

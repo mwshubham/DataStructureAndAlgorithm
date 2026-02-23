@@ -19,10 +19,16 @@ class ValidateBinarySearchTree {
         private fun isValidBST(root: TreeNode?, minVal: Long, maxVal: Long): Boolean {
             root ?: return true
             if (root.`val` >= maxVal || root.`val` <= minVal) return false
-            return isValidBST(root.left, minVal, root.`val`.toLong()) && isValidBST(
-                root.right,
-                root.`val`.toLong(),
-                maxVal
+
+            // Validate Left and Right recursively.
+            return isValidBST(
+                root = root.left,
+                minVal = minVal,
+                maxVal = root.`val`.toLong()
+            ) && isValidBST(
+                root = root.right,
+                minVal = root.`val`.toLong(),
+                maxVal = maxVal
             )
         }
     }
