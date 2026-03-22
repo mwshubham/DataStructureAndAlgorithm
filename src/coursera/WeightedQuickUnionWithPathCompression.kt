@@ -1,22 +1,21 @@
 package coursera
 
 /**
- * https://www.coursera.org/learn/algorithms-part1/lecture/ZgecU/quick-union
+ * https://www.coursera.org/learn/algorithms-part1/lecture/RZW72/quick-union-improvements
  *
  * Complexity:
- * Initialization: O(N)
- * Union: O(N) worst case (tree can get tall)
- * Find/Connected: O(N) worst case (tree can get tall)
  */
-class QuickUnion(
+class WeightedQuickUnionWithPathCompression(
     val count: Int
 ) {
 
     val items = Array(count) { it }
+    val size = Array(count) { 1 }
 
     private fun root(i: Int): Int {
         var current = i
-        while (items[current] != current) {
+        while (current != items[current]) {
+            items[current] = items[items[current]]
             current = items[current]
         }
         return current
@@ -26,17 +25,25 @@ class QuickUnion(
         val rootP = root(p)
         val rootQ = root(q)
         if (rootP != rootQ) {
-            items[rootP] = rootQ
+            if (size[p] < size[q]) {
+                items[rootP] = rootQ
+                size[q] += size[p]
+            } else {
+                items[rootQ] = rootP
+                size[p] += size[q]
+            }
+
         }
     }
 
     fun connected(p: Int, q: Int): Boolean {
         return root(p) == root(q)
     }
+
 }
 
-fun main() {
-    val quickUnion = QuickUnion(10)
+private fun main() {
+    val quickUnion = WeightedQuickUnionWithPathCompression(10)
 
     // Initial state: each element is its own root
     println("Initial state:")
@@ -110,7 +117,7 @@ fun main() {
     }
 }
 
-private fun printState(quickUnion: QuickUnion) {
+private fun printState(quickUnion: WeightedQuickUnionWithPathCompression) {
     for (i in 0 until quickUnion.count) {
         print("${quickUnion.items[i]} ")
     }
