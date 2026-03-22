@@ -28,4 +28,21 @@ class ReverseWords {
         println(sb.toString())
         return sb.split(" ").reversed().joinToString(" ")
     }
+
+    fun reverseWords2(s: String): String {
+        val arr = s.split(" ")
+        val sb = StringBuilder()
+        for (i in arr.lastIndex downTo 0) {
+            val word = arr[i]
+            if (word.isNotEmpty()) {
+                if (sb.isNotEmpty() && i != arr.lastIndex) {
+                    sb.append(" ")
+                }
+                sb.append(word)
+            }
+        }
+        return sb.toString()
+    }
+
+
 }
