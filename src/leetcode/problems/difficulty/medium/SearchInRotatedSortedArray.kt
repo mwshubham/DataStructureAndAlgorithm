@@ -37,5 +37,53 @@ class SearchInRotatedSortedArray {
             }
             return -1
         }
+
+        fun search2(nums: IntArray, target: Int): Int {
+            var left = 0
+            var right = nums.lastIndex
+
+            while (left <= right) {
+                val mid = left + (right - left) / 2
+
+                //            println("left: $left, mid: $mid, right: $right")
+                if (nums[mid] == target) return mid
+
+
+                // Sorted Left
+                if (nums[left] <= nums[mid]) {
+                    if (target >= nums[left] && target < nums[mid]) {
+                        right = mid - 1
+                    } else {
+                        left = mid + 1
+                    }
+                }
+                // Sorted Right
+                else {
+                    if (target > nums[mid] && target <= nums[right]) {
+                        left = mid + 1
+                    } else {
+                        right = mid - 1
+                    }
+                }
+            }
+            return -1
+        }
+    }
+}
+
+
+fun main() {
+    SearchInRotatedSortedArray.apply {
+        search2(intArrayOf(1, 2, 3, 4, 5), 1).println()
+        search(intArrayOf(1, 2, 3, 4, 5), 2).println()
+        search(intArrayOf(1, 2, 3, 4, 5), 3).println()
+        search(intArrayOf(1, 2, 3, 4, 5), 4).println()
+        search(intArrayOf(1, 2, 3, 4, 5), 5).println()
+
+        search(intArrayOf(5, 1, 2, 3, 4), 1).println()
+        search(intArrayOf(5, 1, 2, 3, 4), 2).println()
+        search(intArrayOf(5, 1, 2, 3, 4), 3).println()
+        search(intArrayOf(5, 1, 2, 3, 4), 4).println()
+        search(intArrayOf(5, 1, 2, 3, 4), 5).println()
     }
 }
