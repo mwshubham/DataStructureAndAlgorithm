@@ -3,6 +3,10 @@ package leetcode.problems.category.linkedlist.easy
 import datastructure.ListNode
 
 // 1,2,3,4,5
+/**
+ * 206. Reverse Linked List
+ * https://leetcode.com/problems/reverse-linked-list
+ */
 class ReverseList {
     fun reverseList(head: ListNode?): ListNode? {
         var node = head
@@ -30,5 +34,19 @@ class ReverseList {
             node = next
         }
         throw IllegalStateException("...")
+    }
+
+    fun reverseList3(head: ListNode?): ListNode? {
+        if (head == null) return null
+        var current = head
+        var next = current.next
+        current.next = null
+        while (next != null) {
+            val nextNext = next.next
+            next.next = current
+            current = next
+            next = nextNext
+        }
+        return current
     }
 }
