@@ -70,6 +70,39 @@ class Permutations {
         backtrack()
         return result
     }
+
+    fun permute2(nums: IntArray): List<List<Int>> {
+        val result = mutableListOf<List<Int>>()
+        val path = mutableListOf<Int>()
+        val visited = BooleanArray(nums.size)
+        backtrack(
+            path = path,
+            nums = nums,
+            visited = visited,
+            result = result
+        )
+        return result
+    }
+
+    fun backtrack(path: MutableList<Int>, nums: IntArray, visited: BooleanArray, result: MutableList<List<Int>>) {
+        if (path.size == nums.size) {
+            result.add(ArrayList(path))
+            return
+        }
+        for (i in nums.indices) {
+            if (visited[i]) continue
+            visited[i] = true
+            path.add(nums[i])
+            backtrack(
+                path = path,
+                nums = nums,
+                visited = visited,
+                result = result
+            )
+            path.removeAt(path.lastIndex)
+            visited[i] = false
+        }
+    }
 }
 
 fun main() {
