@@ -52,11 +52,11 @@ class PalindromeLinkedList {
             slow = reverse(slow)
             fast = head
             while (slow != null) {
-                if (slow?.`val` != fast?.`val`) {
+                if (slow.`val` != fast?.`val`) {
                     return false
                 }
-                slow = slow?.next
-                fast = fast?.next
+                slow = slow.next
+                fast = fast.next
             }
             return true
         }
@@ -73,7 +73,53 @@ class PalindromeLinkedList {
             }
             return prev
         }
+
+        fun isPalindrome(head: ListNode?): Boolean {
+            head ?: return true
+            var count = 0
+            var current = head
+            while (current != null) {
+                count++
+                current = current.next
+            }
+
+            current = head
+
+            var prev: ListNode? = null
+            val loopCount = count / 2
+            println("count: $count")
+            println("loopCount: $loopCount")
+
+            for (i in 0 until loopCount) {
+                // println("i: $i")
+                val next = current?.next
+                current?.next = prev
+                prev = current
+                current = next
+            }
+            var reverseHead = prev
+            var forwardHead = current
+            println("reverseHead.val: ${reverseHead?.`val`}")
+            println("forwardHead.val: ${forwardHead?.`val`}")
+            if (count % 2 != 0) {
+                forwardHead = current?.next
+                println("forwardHead.val: ${forwardHead?.`val`}")
+            }
+
+            while (forwardHead != null && reverseHead != null) {
+                println("reverseHead.val: ${reverseHead.`val`}")
+                println("forwardHead.val: ${forwardHead.`val`}")
+                if (forwardHead.`val` != reverseHead.`val`) {
+                    return false
+                }
+                reverseHead = reverseHead.next
+                forwardHead = forwardHead.next
+            }
+            return true
+        }
     }
+
+
 }
 
 fun main() {
