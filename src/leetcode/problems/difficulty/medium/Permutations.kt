@@ -40,4 +40,38 @@ class Permutations {
             return res
         }
     }
+
+    // 1,2,3
+    // 1 = 1
+    // 2 = 2
+    // 3 = 6
+    // 4 = 24
+    // Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]]
+
+    fun permute(nums: IntArray): List<List<Int>> {
+        val result = mutableListOf<List<Int>>()
+        val path = mutableListOf<Int>()
+        val used = BooleanArray(nums.size)
+
+        fun backtrack() {
+            if (path.size == nums.size) {
+                result.add(ArrayList(path))
+                return
+            }
+            for (i in nums.indices) {
+                if (used[i]) continue
+                used[i] = true
+                path.add(nums[i])
+                backtrack()
+                path.removeAt(path.lastIndex)
+                used[i] = false
+            }
+        }
+        backtrack()
+        return result
+    }
+}
+
+fun main() {
+    Permutations().permute(intArrayOf(1, 2, 3))
 }
