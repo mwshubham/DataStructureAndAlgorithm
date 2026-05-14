@@ -46,6 +46,18 @@ class HouseRobber {
 //            println("dp: ${dp.asList()}")
             return dp[index]
         }
+
+
+        fun rob2(nums: IntArray): Int {
+            var maxSkip = 0
+            var maxPick = nums.first()
+            for (i in 1 until nums.size) {
+                val temp = maxPick
+                maxPick = nums[i] + maxSkip
+                maxSkip = Math.max(temp, maxSkip)
+            }
+            return Math.max(maxPick, maxSkip)
+        }
     }
 }
 
