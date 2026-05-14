@@ -15,16 +15,14 @@ class PartitionEqualSubsetSum {
             val sum = nums.sum()
             if (sum % 2 != 0) return false
             val target = sum / 2
-            val dp = BooleanArray(target + 1) { false }
+            val dp = BooleanArray(target + 1)
             dp[0] = true
 
             for (num in nums) {
-                for (i in target downTo 0) {
-                    if (i >= num) {
-                        dp[i] = dp[i] || dp[i - num]
-                    }
-                    if (dp.last()) return true
+                for (i in target downTo num) {
+                    dp[i] = dp[i] || dp[i - num]
                 }
+                if (dp[target]) return true
             }
             return dp.last()
         }
@@ -55,5 +53,27 @@ class PartitionEqualSubsetSum {
             }
             return dp.last().last()
         }
+    }
+
+    fun canPartition2(nums: IntArray): Boolean {
+        val sum = nums.sum()
+        val target = sum / 2
+        if (sum % 2 != 0) return false
+        val memo = Array(nums.size) { arrayOfNulls<Boolean>(target + 1) }
+        return dfs(0, target, nums, memo)
+    }
+
+    fun dfs(index: Int, target: Int, nums: IntArray, memo: Array<Array<Boolean?>>): Boolean {
+        if (target == 0) return true
+
+        if (target < 0) return false
+        if (index > nums.lastIndex) return false
+
+        if (memo[index][target] != null) return memo[index][target]!!
+
+        val result = dfs(index + 1, target, nums, memo) || dfs(index + 1, target - nums[index], nums, memo)
+        memo[index][target] = result
+
+        return result
     }
 }
