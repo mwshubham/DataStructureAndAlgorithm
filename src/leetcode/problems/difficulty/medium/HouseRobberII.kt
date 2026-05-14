@@ -30,5 +30,24 @@ class HouseRobberII {
             }
             return Math.max(ifRobbedPrevious, ifDidntRobPrevious)
         }
+
+        fun rob2(nums: IntArray): Int {
+            if (nums.size == 1) return nums[0]
+            return Math.max(
+                rob2(nums, 0, nums.lastIndex - 1),
+                rob2(nums, 1, nums.lastIndex)
+            )
+        }
+
+        fun rob2(nums: IntArray, start: Int, end : Int): Int {
+            var maxSkip = 0
+            var maxPick = 0
+            for (i in start..end) {
+                val prevMaxPick = maxPick
+                maxPick = nums[i] + maxSkip
+                maxSkip = Math.max(prevMaxPick, maxSkip)
+            }
+            return Math.max(maxPick, maxSkip)
+        }
     }
 }
