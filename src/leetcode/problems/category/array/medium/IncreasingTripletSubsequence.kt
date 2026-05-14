@@ -25,6 +25,18 @@ class IncreasingTripletSubsequence {
             }
             return false
         }
+
+        fun increasingTriplet2(nums: IntArray): Boolean {
+            var a = Int.MAX_VALUE
+            var b = Int.MAX_VALUE
+            nums.forEach {
+                if (it <= a) a = it
+                else if (it <= b) b = it
+                else return true
+            }
+            return false
+        }
+
     }
 }
 
