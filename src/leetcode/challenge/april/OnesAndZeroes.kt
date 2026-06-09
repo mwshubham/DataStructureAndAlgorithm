@@ -1,8 +1,10 @@
 package leetcode.challenge.april
 
+import kotlin1.println
 import kotlin.math.max
 
 /**
+ * 474. Ones and Zeroes
  * https://leetcode.com/explore/challenge/card/april-leetcoding-challenge-2021/593/week-1-april-1st-april-7th/3694/
  * https://leetcode.com/problems/ones-and-zeroes/
  */
@@ -82,6 +84,94 @@ class OnesAndZeroes {
             }
             return dp2[m][n]
         }
+
+        fun findMaxForm2(strs: Array<String>, m: Int, n: Int): Int {
+            val mn = Array(strs.size) { Pair(0, 0) }
+            for (i in strs.indices) {
+                val zeros = strs[i].count { it == '0' }
+                val ones = strs[i].length - zeros
+                mn[i] = Pair(zeros, ones)
+            }
+
+            val dp = Array(strs.size) {
+                Array(m + 1) {
+                    IntArray(n + 1) { -1 }
+                }
+            }
+
+            return dfs(
+                m,
+                n,
+                mn,
+                dp,
+                0,
+                0,
+                0
+            )
+        }
+
+        fun dfs(
+            m: Int,
+            n: Int,
+            mn: Array<Pair<Int, Int>>,
+            dp: Array<Array<IntArray>>,
+            index: Int,
+            m1: Int,
+            n1: Int,
+        ): Int {
+            if (m1 > m || n1 > n) return Int.MIN_VALUE
+            if (index == mn.size) return 0
+            if (dp[index][m1][n1] != -1) {
+                return dp[index][m1][n1]
+            }
+            val resIfNotPick = dfs(
+                m,
+                n,
+                mn,
+                dp,
+                index + 1,
+                m1,
+                n1
+            )
+            val resIfPick = 1 + dfs(
+                m,
+                n,
+                mn,
+                dp,
+                index + 1,
+                m1 + mn[index].first,
+                n1 + mn[index].second
+            )
+            return max(resIfNotPick, resIfPick).also {
+                dp[index][m1][n1] = it
+            }
+        }
+
+        fun findMaxForm3(strs: Array<String>, m: Int, n: Int): Int {
+            val dp = Array(m + 1) { IntArray(n + 1) }
+            for (str in strs) {
+                val zeros = str.count { it == '0' }
+                val ones = str.length - zeros
+
+                println("str: $str  -- zeros: $zeros, ones:$ones")
+                println(" ")
+                for (i in m downTo zeros) {
+                    for (j in n downTo ones) {
+                        dp[i][j] = max(
+                            dp[i][j],
+                            dp[i - zeros][j - ones] + 1
+                        )
+                        repeat(dp.size) {
+                            println("$it ---> " + dp[it].asList())
+                        }
+                        println(" ")
+                        println(" ")
+                    }
+                }
+            }
+
+            return dp[m][n]
+        }
     }
 }
 
@@ -95,13 +185,21 @@ class OnesAndZeroes {
 //47
 //88
 fun main() {
-    println(
-        OnesAndZeroes.findMaxFormUsingTabularDpTopDown(
+    OnesAndZeroes.apply {
+        findMaxForm3(
             arrayOf("10", "0001", "111001", "1", "0"),
             5,
             3
-        )
-    )
+        ).println()
+    }
+}
+//    println(
+//        OnesAndZeroes.findMaxFormUsingTabularDpTopDown(
+//            arrayOf("10", "0001", "111001", "1", "0"),
+//            5,
+//            3
+//        )
+//    )
 //    println(
 //        OnesAndZeroes.findMaxFormUsingTabularDp(
 //            arrayOf("10", "0", "1"),
@@ -109,4 +207,3 @@ fun main() {
 //            1
 //        )
 //    )
-}
