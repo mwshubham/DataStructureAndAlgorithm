@@ -178,7 +178,7 @@ class LeetCodeFileGenerator:
                 return False
 
         # Step 7: Generate Kotlin code
-        kotlin_code = self.generate_kotlin_code(class_name, problem_number, title, url)
+        kotlin_code = self.generate_kotlin_code(class_name, problem_number, title, url, difficulty)
 
         # Step 8: Write file
         try:
@@ -190,14 +190,9 @@ class LeetCodeFileGenerator:
             print(f"Error: Could not write file {file_path}: {e}", file=sys.stderr)
             return False
 
-    def generate_kotlin_code(self, class_name: str, problem_number: str, title: str, url: str) -> str:
+    def generate_kotlin_code(self, class_name: str, problem_number: str, title: str, url: str, difficulty: str) -> str:
         """Generate the Kotlin file content."""
-        difficulty = url.split('/')[-2]
-        metadata = self.fetch_problem_metadata(self.extract_slug_from_url(url))
-        if metadata:
-            difficulty = metadata[1].lower()
-
-        package_name = f"leetcode.problems.difficulty.{difficulty}"
+        package_name = f"leetcode.problems.difficulty.{difficulty.lower()}"
 
         kotlin_code = f"""package {package_name}
 
