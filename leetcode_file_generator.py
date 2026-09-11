@@ -18,8 +18,11 @@ from typing import Optional, Tuple, List
 
 
 class LeetCodeFileGenerator:
-    def __init__(self, base_path: str = "/Users/shubham.agarwal/IdeaProjects/DataStructureAndAlgorithm/src"):
-        self.base_path = Path(base_path)
+    def __init__(self, base_path: Optional[str] = None):
+        if base_path:
+            self.base_path = Path(base_path)
+        else:
+            self.base_path = Path(__file__).resolve().parent / "src"
         self.difficulties_path = self.base_path / "leetcode" / "problems" / "difficulty"
 
     def extract_slug_from_url(self, url: str) -> Optional[str]:
