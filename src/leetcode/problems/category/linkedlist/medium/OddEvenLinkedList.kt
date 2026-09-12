@@ -11,6 +11,35 @@ private val Int.isEven: Boolean
 // https://leetcode.com/explore/challenge/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3331/
 // https://leetcode.com/submissions/detail/340110891/?from=/explore/challenge/card/may-leetcoding-challenge/536/week-3-may-15th-may-21st/3331/
 class OddEvenLinkedList {
+
+    fun oddEvenList2(head: ListNode?): ListNode? {
+        if (head == null) return null
+        if (head.next == null) return head
+
+        val oddHead = head
+        val evenHead = head.next
+
+        var current = head.next?.next
+        var currentOdd = oddHead
+        var currentEven = evenHead
+
+        var oddFlag = true
+        while (currentEven?.next != null) {
+            if (oddFlag) {
+                currentOdd?.next = current
+                currentOdd = current
+            } else {
+                currentEven.next = current
+                currentEven = current
+            }
+            current = current?.next
+            oddFlag = !oddFlag
+        }
+        currentOdd?.next = evenHead
+        return oddHead
+    }
+
+
     fun oddEvenList(head: ListNode?): ListNode? {
         var evenHeadNode: ListNode? = null
         var evenEndNode: ListNode? = null
